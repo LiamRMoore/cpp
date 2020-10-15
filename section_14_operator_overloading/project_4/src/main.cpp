@@ -7,35 +7,26 @@ using namespace std;
 
 int main() {
 
-    Mystring a {"hello"}; // overloaded constructor
-    a = Mystring {"Hola"}; // overloaded constr + move assignment
-    a = "Bonjour"; // Overloaded constr + move assignment
-    
-    Mystring empty; // no args constr
-    Mystring larry{"Larry"}; // overloaded constr
-    Mystring stooge{larry}; // copy constr
-    Mystring stooges; // no args constr
+    cout << boolalpha;
+    Mystring larry{"Larry"}; 
+    Mystring moe{"Moe"}; 
+    Mystring stooge{larry}; 
 
-    empty = stooge; // overloaded/copy assignment op
+    larry.display();
+    moe.display();
 
-    empty.display(); // "Larry: 5"
-    larry.display(); // "
-    stooge.display(); // "
-    
-    stooges = "Larry, Moe and Curly";
-    stooges.display();
+    cout << (larry == moe) << endl;
+    cout << (larry == stooge) << endl;
 
-    vector<Mystring> stooges_vec;
-    stooges_vec.push_back("Larry");
-    stooges_vec.push_back("Moe");
-    stooges_vec.push_back("Curly");
+    larry.display();
+    Mystring larry2 = -larry;
+    larry2.display();
 
-    cout << "Loop 1" << endl;
-    for (const Mystring &s: stooges_vec)
-        s.display();
+    Mystring stooges = larry + "Moe";
+    Mystring two_stooges = moe + " " + larry;
+    two_stooges.display();
 
-    cout << "Loop 2" << endl;
-    for (Mystring &s: stooges_vec)
-        s = "changed";
+    Mystring three_stooges = moe + " " + larry + " " + "Curly";
+    three_stooges.display();
     return 0;
 }

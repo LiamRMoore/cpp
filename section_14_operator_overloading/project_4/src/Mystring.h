@@ -19,8 +19,13 @@ class Mystring {
         Mystring &operator=(const Mystring &rhs);  
         // move assignment
         Mystring &operator=(Mystring &&rhs);  
-
-        
+        // overloaded operators
+        // equality
+        bool operator==(const Mystring &rhs) const;
+        // unary -
+        Mystring operator-();
+        // addition
+        Mystring operator+(const Mystring &rhs) const;
 };
 
 #endif // _MYSTRING_H

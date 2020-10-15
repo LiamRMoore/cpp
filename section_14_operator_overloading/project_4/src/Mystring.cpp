@@ -67,6 +67,37 @@ Mystring &Mystring::operator=(Mystring &&rhs) {
     return *this;
 }
 
+// overloaded operators
+// equality
+bool Mystring::operator==(const Mystring &rhs) const {
+    if (std::strcmp(str, rhs.str) == 0) {
+        return true;
+    }
+    return false;
+}
+
+// unary -
+Mystring Mystring::operator-() {
+    size_t bfr_size = std::strlen(str);
+    char *bfr = new char[bfr_size];
+    for (size_t i{0}; i < bfr_size; ++i)
+        bfr[i] = std::tolower(str[i]);
+    Mystring temp {bfr};
+    delete [] bfr;
+    return temp;
+}
+
+// addition
+Mystring Mystring::operator+(const Mystring &rhs) const {
+    size_t bfr_size = std::strlen(str) + std::strlen(rhs.str);
+    char *bfr = new char[bfr_size];
+    std::strcpy(bfr, str);
+    std::strcat(bfr, rhs.str);
+    Mystring temp {bfr};
+    delete [] bfr;
+    return temp;
+}
+
 // display fn
 void Mystring::display() const {
     std::cout << str << " : " << get_length() << std::endl;
