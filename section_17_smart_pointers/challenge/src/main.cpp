@@ -20,12 +20,12 @@ class Test {
 };
 
 // Function prototypes
-std::unique_ptr<std::vector<std::shared_ptr<Test>>> make();
+auto make();
 void fill(std::vector<std::shared_ptr<Test>> &vec, int num);
 void display(const std::vector<std::shared_ptr<Test>> &vec);
 
 // function implementations
-std::unique_ptr<std::vector<std::shared_ptr<Test>>> make() {
+auto make() {
     return make_unique<vector<shared_ptr<Test>>>();
 }
 
@@ -43,7 +43,7 @@ void fill(vector<shared_ptr<Test>> &vec, int num) {
 
 void display(const vector<shared_ptr<Test>> &vec) {
     cout << "Displaying vector..." << endl;
-    for (const auto t_ptr: vec)
+    for (const auto &t_ptr: vec)
         cout << t_ptr->get_data() << endl;
     cout << endl;
 }
